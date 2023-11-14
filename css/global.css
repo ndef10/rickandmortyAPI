@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Mynerve&display=swap');
+
+:root {   
+    --primario: rgb(0, 176, 200);
+    --secundario: rgb(97, 204, 93);
+    --blanco: white;
+    --negro: black;
+    --oscuro: #000;
+    --gris: rgb(62, 59, 59);
+    --success: green;
+    --danger: red;
+    --parrafos: 'Mynerve', cursive;
+}
+
+html{
+    box-sizing: border-box;  
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+*,*::after, *::before{
+    box-sizing: inherit;
+}
+
+body {
+    width: 100wv;
+    height: auto;
+    background: linear-gradient(90deg, rgb(220, 26, 188), rgb(218, 108, 111), rgb(14, 72, 143));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden;
+    
+}
+
+header {
+    background-image: url('/img/rick-morty.jpg');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 73vh;
+}
+
+h4, p{
+    font-family: var(--parrafos);
+    color: var(--blanco);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
