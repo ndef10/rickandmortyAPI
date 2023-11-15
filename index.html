@@ -9,6 +9,15 @@
      <link rel="shortcut icon" href="/assets/img/rick-morty-logo-removebg-preview.png" type="image/x-icon">
     <title>Rick and Morty Full Color</title>
 
+    <!-- font aweson -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
     <!-- normalize css -->
     <link rel="stylesheet" href="/css/normalize.css">
 
@@ -18,12 +27,15 @@
     <!-- style css -->
     <link rel="stylesheet" href="/css/style.css">
 
+    <!-- volver css -->
+    <link rel="stylesheet" href="/css/volver.css">
+
 </head>
 <body>
-    <header>
+    <header id="home" class="home">
     </header>
     <main>
-        <section id="home" class="home">
+        <section>
 
             <img class="titulo" src="/assets/img/rickymorty.png" alt="Imagen texto rick and Morty">
             <hr>
@@ -32,6 +44,7 @@
             </div>   
         </section>    
     </main>
+    <a class="volver" href="#home"><i class="fa-solid fa-angle-up"></i></a>
     <footer class="footer">
         <p>
             Todos los derechos reservados &copy; 2023 Rick <span>&</span> Morty,
