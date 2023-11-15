@@ -36,7 +36,7 @@ body {
 }
 
 header {
-    background-image: url('/img/rick-morty.jpg');
+    background-image: url('/assets/img/rick-morty.jpg');
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
