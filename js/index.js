@@ -20,6 +20,7 @@ const getApi = async (URL) => {
     return data.results;
 }
 
+
 //Funcion encargada de crear las cards
 // en base a maquetacion en html anterior
 const createCards = ( character) => {
@@ -57,13 +58,43 @@ const getToDoo = async () => {
     console.log(response);
 }
 
+//Funcion que muestra una card con un mensaje cuando no encuentra un personaje
+const notFound = () => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+
+    const img = document.createElement('img');
+    img.src = ('./assets/img/notfound.jpeg');
+    img.alt = 'No lo encontramos';
+
+    const description = document.createElement('div');
+    description.classList.add('description');
+
+    const titulo = document.createElement('h4');
+    titulo.textContent = 'Personaje no encontrado'
+    const texto = document.createElement('p');
+    texto.textContent = "Realiza otra busqueda ";
+
+    card.appendChild(img);
+    card.appendChild(description);
+
+    description.appendChild(titulo);
+    description.appendChild(texto);
+
+    divCard.appendChild(card);
+}
+
 //Esta limpia el contenedor cuando recibe el evento keyup  que le llega por parametro
 //trae la respuesta de la URL2 + el valor ingresado por el usuario en el input
 //lo mapea y entrega el resultado a la funcion que crea la card
 const getPersonForName = async (event) => {
    divCard.innerHTML = "" ;
    const response = await getApi (URL2+event.target.value);
-   response.map(character => createCards(character))
+   if (response && response.length > 0) {
+    response.map(character => createCards(character));
+    } else {
+        notFound();
+    }
 }
 
 //cuando carga la aplicacion se ejecuta la funcion getToDoo y muestra el resultado (20 personajes)
