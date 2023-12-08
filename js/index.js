@@ -1,5 +1,3 @@
-console.log('probando');
-
 // traer el contenido del input
 const search = document.getElementById('search');
 
@@ -7,15 +5,23 @@ const search = document.getElementById('search');
 const divCard = document.getElementById('containerCard');
 
 // poner URLs en una constante 
-const URL1 = 'https://rickandmortyapi.com/api/character';
-const URL2 = 'https://rickandmortyapi.com/api/character/?name='
+const URL1 = 'https://rickandmortyapi.com/api/character/?page=';
+const URL2 = 'https://rickandmortyapi.com/api/character/?name=';
 
-//Función asincrónica recibe una URL como parametro, 
+let page = 1;
+
+//Función asincrónica recibe una URL y page como parametro, 
 //mediante fetch usa la URL para hacer una consulta a la API
 //espera la respuesta, la parsea como JSON 
 //y devuelve la propiedad results del objeto JSON resultante.
-const getApi = async (URL) => {
-    const response = await fetch(URL);
+const getApi = async (URL1, page) => {
+    const response = await fetch(URL1+ page);
+    const data = await response.json()
+    return data.results;
+}
+
+const getApi2 = async (URL2) => {
+    const response = await fetch(URL2);
     const data = await response.json()
     return data.results;
 }
@@ -34,17 +40,18 @@ const createCards = ( character) => {
     const description = document.createElement('div');
     description.classList.add('description');
 
-    const titulo = document.createElement('h4');
-    titulo.textContent = character.name
-    const texto = document.createElement('p');
+    const title = document.createElement('h4');
+    title.textContent = character.name
+    const text = document.createElement('p');
+    text.textContent = "Especie: " + character.species;
     // texto.textContent = "Procedencia: " + character.origin.name;
-    texto.textContent = "Especie: " + character.species;
+    
 
     card.appendChild(img);
     card.appendChild(description);
 
-    description.appendChild(titulo);
-    description.appendChild(texto);
+    description.appendChild(title);
+    description.appendChild(text);
 
     divCard.appendChild(card);
 }
@@ -52,10 +59,8 @@ const createCards = ( character) => {
 //Trae la respuesta entregada por la funcion getApi usando la primera URL
 //la mapea, y le entrega el resultado a la funcion que crea la card
 const getToDoo = async () => {
-    const response = await getApi (URL1);
-
+    const response = await getApi (URL1, page);
     response.map(character => createCards(character));
-    console.log(response);
 }
 
 //Funcion que muestra una card con un mensaje cuando no encuentra un personaje
@@ -70,16 +75,16 @@ const notFound = () => {
     const description = document.createElement('div');
     description.classList.add('description');
 
-    const titulo = document.createElement('h4');
-    titulo.textContent = 'Personaje no encontrado'
-    const texto = document.createElement('p');
-    texto.textContent = "Realiza otra busqueda ";
+    const title = document.createElement('h4');
+    title.textContent = 'Personaje no encontrado'
+    const text = document.createElement('p');
+    text.textContent = "Realiza otra busqueda ";
 
     card.appendChild(img);
     card.appendChild(description);
 
-    description.appendChild(titulo);
-    description.appendChild(texto);
+    description.appendChild(title);
+    description.appendChild(text);
 
     divCard.appendChild(card);
 }
@@ -89,7 +94,7 @@ const notFound = () => {
 //lo mapea y entrega el resultado a la funcion que crea la card
 const getPersonForName = async (event) => {
    divCard.innerHTML = "" ;
-   const response = await getApi (URL2+event.target.value);
+   const response = await getApi2 (URL2+event.target.value);
    if (response && response.length > 0) {
     response.map(character => createCards(character));
     } else {
@@ -97,12 +102,40 @@ const getPersonForName = async (event) => {
     }
 }
 
+//avanza a la siguiente pagina
+const nextPage = () => {
+    console.log('click en siguiente')
+    page++;
+    console.log(page)
+    divCard.innerHTML = "";
+    getToDoo(page);
+    const prevButton = document.getElementById('prevPage')
+        console.log(prevButton)
+        prevButton.classList.remove('inactive')
+}
+
+//retrocede a la pagina anterior
+const prevPage = () => {
+    if (page > 1) {
+        page--;
+        divCard.innerHTML = "";
+        getToDoo(page);
+        
+    } else {
+        const prevButton = document.getElementById('prevPage')
+        prevButton.classList.add('inactive')
+    }
+}
+
+
 //cuando carga la aplicacion se ejecuta la funcion getToDoo y muestra el resultado (20 personajes)
 window.addEventListener('DOMContentLoaded', getToDoo);
 
 //cuando cliente escribe en el input se ejecuta la funcion getPersonForName y muestra coincidencias
 search.addEventListener('keyup', getPersonForName);
 
-
+//trae los botones de paginación
+document.getElementById('nextPage').addEventListener('click', nextPage);
+document.getElementById('prevPage').addEventListener('click', prevPage);
 
 

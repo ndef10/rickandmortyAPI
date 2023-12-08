@@ -27,8 +27,11 @@
     <!-- style css -->
     <link rel="stylesheet" href="/css/style.css">
 
-    <!-- volver css -->
-    <link rel="stylesheet" href="/css/volver.css">
+    <!-- up css -->
+    <link rel="stylesheet" href="/css/up.css">
+
+    <!-- down css -->
+    <link rel="stylesheet" href="/css/down.css">
 
 </head>
 <body>
@@ -37,14 +40,20 @@
     <main>
         <section>
 
-            <img class="titulo" src="/assets/img/rickymorty.png" alt="Imagen texto rick and Morty">
+            <img class="title" src="/assets/img/rickymorty.png" alt="Imagen texto rick and Morty">
             <hr>
             <input id="search" class="search" type="text" placeholder="Escribe lo que quieres buscar">
+            <a class="down" href="#pagination"><i class="fa-solid fa-angle-down"></i></a>
             <div id="containerCard" class="container-card">
-            </div>   
-        </section>    
+            </div>  
+            <div id="pagination" class="pagination">
+                <button id="prevPage" class="inactive"><i class="fa-solid fa-chevron-left"></i></button>
+                <button id="nextPage"><i class="fa-solid fa-chevron-right"></i></button>
+            </div> 
+        </section>  
+
     </main>
-    <a class="volver" href="#home"><i class="fa-solid fa-angle-up"></i></a>
+    <a class="up" href="#home"><i class="fa-solid fa-angle-up"></i></a>
     <footer class="footer">
         <p>
             Todos los derechos reservados &copy; 2023 Rick <span>&</span> Morty,
@@ -52,6 +61,5 @@
         </p>
     </footer>
     <script defer src="/js/index.js"></script>
-    
 </body>
 </html>
