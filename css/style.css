@@ -8,6 +8,7 @@ hr {
 }
 
 .search {
+    display: none;
     width: 90%;
     height: 1rem;
     border-radius: 1rem;
@@ -16,6 +17,42 @@ hr {
     margin: 1rem 1rem auto;
     font-size: 2.3rem;
     font-family: var(--parrafos);
+}
+
+#lupita {
+    background-color: var(--primario);
+    color: var(--blanco);
+    font-size: 2rem;
+    padding-top: 1.3rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;   
+}
+
+#personajes {
+    width: 340px;
+    margin: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px; 
+}
+
+.selection {
+    padding: 0;
+    align-items: center;
+}
+
+.select {
+    height: 5rem;
+    max-width: 80%;
+    text-decoration: none;
+    color: var(--primario);
+    padding-left: 1rem;
+    margin: 1rem 1rem auto;
+    font-size: 2.3rem;
+    font-family: var(--parrafos);
+    overflow-y: auto;
 }
 
 .container-card {
@@ -77,6 +114,10 @@ hr {
     transition: 0.3s;
 }
 
+.pagination p {
+    margin: 0%;
+}
+
 .inactive {
     color: var(--success);
     pointer-events: none;
@@ -120,5 +161,10 @@ hr {
     
     .footer span {
         font-size: 2rem;
+    }
+    #personajes {
+        width: 900px;
+        font-size: 2.5rem;
+        text-align: center;
     }
 }

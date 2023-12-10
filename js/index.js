@@ -4,6 +4,9 @@ const search = document.getElementById('search');
 // traer el contenedor
 const divCard = document.getElementById('containerCard');
 
+//traer la lupita
+const lupa = document.getElementById('lupita');
+
 // poner URLs en una constante 
 const URL1 = 'https://rickandmortyapi.com/api/character/?page=';
 const URL2 = 'https://rickandmortyapi.com/api/character/?name=';
@@ -127,6 +130,24 @@ const prevPage = () => {
     }
 }
 
+const traerJessica = async () => {
+     // Obtener el valor seleccionado
+     var selectElement = document.getElementById("personajes");
+     let nombre = selectElement.value;
+    divCard.innerHTML = "" ;
+    const response = await getApi2 (URL2+nombre);
+    console.log(response)
+    if (response && response.length > 0) {
+        response.map(character => createCards(character));
+    } else {
+        notFound();
+    }
+}
+
+const paraBuscar = () => {
+    console.log('click en la pupa')
+}
+
 
 //cuando carga la aplicacion se ejecuta la funcion getToDoo y muestra el resultado (20 personajes)
 window.addEventListener('DOMContentLoaded', getToDoo);
@@ -137,5 +158,9 @@ search.addEventListener('keyup', getPersonForName);
 //trae los botones de paginación
 document.getElementById('nextPage').addEventListener('click', nextPage);
 document.getElementById('prevPage').addEventListener('click', prevPage);
+
+document.getElementById('personajes').addEventListener('click', traerJessica);
+
+lupa.addEventListener('click', paraBuscar);
 
 

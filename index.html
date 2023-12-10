@@ -42,13 +42,40 @@
 
             <img class="title" src="/assets/img/rickymorty.png" alt="Imagen texto rick and Morty">
             <hr>
-            <input id="search" class="search" type="text" placeholder="Escribe lo que quieres buscar">
+
+            <div class="selection">
+                <i class="fa-solid fa-magnifying-glass" id="lupita"></i>
+                <select class="select" id="personajes">
+                    <option selected>Seleccione un personaje</option>
+                    <option id="rick"value="rick">Rick</option>
+                    <option id="morty"value="morty">Morty</option>
+                    <option id="Beth"value="Beth">Beth</option>
+                    <option id="Jerry"value="Jerry">Jerry</option>
+                    <option id="jessica" value="jessica">Jessica</option>
+                    <option id="Principal Vagina"value="Principal Vagina">Principal V</option>
+                    <option id="Goldenfold"value="Goldenfold">Goldenfold</option>
+                    <option id="Brad"value="Brad">Brad</option>
+                    <option id="Brad Anderson"value="Brad Anderson">Brad Anderson</option>
+                    <option id="Ethan"value="Ethan">Ethan</option>
+                    <option id="Nancy"value="Nancy">Nancy</option>
+                    <option id="Toby Matthews"value="Toby Matthews">Toby Matthews</option>
+                    <option id="Frank"value="Frank">Frank</option>
+                    <option id="Palicky"value="Palicky">Palicky</option>
+                    <option id="MC Haps"value="MC Haps">MC Haps</option>
+                </select>
+            </div>
+            
+            <div class="input">
+                <input id="search" class="search" type="text" placeholder="Escribe lo que quieres buscar">
+            </div>
+            
             <a class="down" href="#pagination"><i class="fa-solid fa-angle-down"></i></a>
             <div id="containerCard" class="container-card">
             </div>  
             <div id="pagination" class="pagination">
                 <button id="prevPage" class="inactive"><i class="fa-solid fa-chevron-left"></i></button>
                 <button id="nextPage"><i class="fa-solid fa-chevron-right"></i></button>
+                <p>Explorar todos</p>
             </div> 
         </section>  
 
